@@ -20,9 +20,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    
+    Route::get('/operators', [OperatorController::class, 'index'])->name('operators.index');
+    Route::get('/operators/{operator}', [OperatorController::class, 'show'])->name('operators.show');
 
-    
+    Route::get('/operators/{operator}/sheets/create', [RevenueSheetController::class, 'create'])->name('sheets.create');
+    Route::post('/operators/{operator}/sheets', [RevenueSheetController::class, 'store'])->name('sheets.store');
+
+    Route::get('/agreements/create', [AgreementController::class, 'create'])->name('agreements.create');
+    Route::post('/agreements', [AgreementController::class, 'store'])->name('agreements.store');
+
+    Route::post('/sheets/{sheet}/calculate', [CalculationController::class, 'calculate'])->name('sheets.calculate');
+    Route::get('/sheets/{sheet}/results', [CalculationController::class, 'results'])->name('sheets.results');
 
 });
 
