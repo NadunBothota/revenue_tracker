@@ -21,7 +21,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/operators', [OperatorController::class, 'index'])->name('operators.index');
-    Route::get('/operators/{operator}', [OperatorController::class, 'show'])->name('operators.show');
 
     Route::get('/operators/{operator}/sheets/create', [RevenueSheetController::class, 'create'])->name('sheets.create');
     Route::post('/operators/{operator}/sheets', [RevenueSheetController::class, 'store'])->name('sheets.store');
